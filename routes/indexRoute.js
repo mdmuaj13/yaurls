@@ -48,8 +48,7 @@ indexRouter.route('/:id')
 
 indexRouter.route('/url')
 .post(async (req,res,next) =>{
-    let { slug, url } = req.body;
-    res.redirect("http://google.com");
+    let { slug, url } = req.body; 
     try {
         await schema.validate({
             slug, url
