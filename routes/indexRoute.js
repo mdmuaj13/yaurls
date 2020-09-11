@@ -2,8 +2,11 @@ const express = require('express')
 const yup = require('yup');
 const monk = require('monk'); 
 const { nanoid } = require('nanoid');
+const bodyParser = require('body-parser');
 const indexRouter = express.Router();
 
+
+indexRouter.use(bodyParser.urlencoded({ extended: true })); 
 
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = "mongodb+srv://mdmuaj:<Mhmuaj#13>@cluster0.vkpxv.mongodb.net/<urlshortner>?retryWrites=true&w=majority";
@@ -49,6 +52,7 @@ indexRouter.route('/:id')
 indexRouter.route('/url')
 .post(async (req,res,next) =>{
     let { slug, url } = req.body; 
+    console.log(req.body);
     try {
         await schema.validate({
             slug, url
@@ -69,6 +73,11 @@ indexRouter.route('/url')
     } catch (error) {
         next(error);
     }
+});
+
+indexRouter.route('/all-urls')
+.get( (req,res,next) => {
+
 });
 
 
