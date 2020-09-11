@@ -4,6 +4,16 @@ const monk = require('monk');
 const { nanoid } = require('nanoid');
 const indexRouter = express.Router();
 
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://mdmuaj:<Mhmuaj#13>@cluster0.vkpxv.mongodb.net/<urlshortner>?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("urlshortner").collection("urls");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
 const db = monk(process.env.MONGO_URI);
 const urlshortner = db.get('urls');
 urlshortner.createIndex({slug : 1}, { unique: true });

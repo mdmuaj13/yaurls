@@ -5,6 +5,17 @@ const helmet = require('helmet');
 var path = require('path');
 const bodyParser = require('body-parser');
 const monk = require('monk'); 
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://mdmuaj:<password>@cluster0.vkpxv.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 require('dotenv').config();
 
 const port = process.env.PORT || 5000;
