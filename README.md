@@ -4,7 +4,7 @@ This is written with node js.. Express and monk used for backend.
 
 UI is not ready yet.. Coming soon
 
-Live project  :
+Live project  : https://shor1.herokuapp.com/
 
 ## Endpoints
 
