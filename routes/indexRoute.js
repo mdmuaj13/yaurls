@@ -30,7 +30,6 @@ indexRouter.route('/:id')
 .get(async (req,res,next) =>{
     const { id : slug } = req.params;
 
-
     try {
         const url = await urlshortner.findOne({ slug });
         if(url){
@@ -42,7 +41,7 @@ indexRouter.route('/:id')
     }
 });
 
-indexRouter.route('/url')
+indexRouter.route('/create-url')
 .post(async (req,res,next) =>{
     let { slug, url } = req.body; 
     console.log(req.body);
@@ -53,6 +52,9 @@ indexRouter.route('/url')
         if(!slug){
             slug = nanoid(4);
         }else {
+            if(slug == 'create-url'){
+                throw new Error('So cruel!! Nice try 🤸‍♂️  ');
+            }
             const existing = await urlshortner.findOne({ slug });
             if(existing) {
                 throw new Error('Slug is in use  🦕 ');
