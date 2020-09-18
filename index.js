@@ -5,6 +5,7 @@ const helmet = require('helmet');
 var path = require('path');
 const bodyParser = require('body-parser');
 const monk = require('monk'); 
+const mongoose = require('mongoose')
 
 
 
@@ -12,8 +13,17 @@ require('dotenv').config();
 
 const port = process.env.PORT || 5000;
 const db = monk(process.env.MONGO_URI);
-const urlshortner = db.get('urls');
+const urlshortner = db.get('url');
 urlshortner.createIndex({slug : 1}, { unique: true });
+
+ 
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+    .then(() =>{
+        console.log("mongodb connected");
+    })
+    .catch(err => console.log(err));
+  
+
 
 const app = express();
 app.use(helmet());
