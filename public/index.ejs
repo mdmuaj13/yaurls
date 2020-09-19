@@ -19,18 +19,25 @@
         <div class="row">
             <div class="col-md-7 p-5">
                 <h2> Yet Another URL shortner 👋 YAURLS </h2> <br>
-                <!-- <form method="POST" action="/url" class="form-controller">  
+                <form method="POST" action="/create-url" class="form-controller">  
                     <h6>Yet another URL shortener  made by 🖤  </h6>
-                     <input type="text" name="slug" placeholder="Input long url here" class="form-control">
-                     <button type="submit"> Short It</button>
-                </form> -->
-                <h6>UI coming soon</h6>
+                     <input type="text" name="url" placeholder="Input long url here" class="form-control" required>
+                     <div class="row mt-2">
+                         <div class="col-8">
+                            <input type="text" name="slug" placeholder="Customize url" class="form-control">
+                         </div>
+                         <div class="col-4">
+                             <button class="btn btn-success" type="submit"> Short It</button>
+                         </div>
+                     </div>
+                </form>
+
+                <hr> 
                 <br><br>
                 <h6>Endpoints</h6>
                 <ul>
                     <li>/create-url - post method⚡  </li>
                     <li>/{slug} - get method  💆  redirect to original link </li>
- 
                 </ul>
 
             </div>

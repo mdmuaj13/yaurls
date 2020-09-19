@@ -5,9 +5,6 @@ const { nanoid } = require('nanoid');
 const bodyParser = require('body-parser');
 const indexRouter = express.Router();
 
-
-indexRouter.use(bodyParser.urlencoded({ extended: true })); 
-
  
 
 const db = monk(process.env.MONGO_URI);
@@ -73,6 +70,11 @@ indexRouter.route('/create-url')
 indexRouter.route('/all-urls')
 .get( (req,res,next) => {
 
+});
+
+indexRouter.route('/404')
+.get((req,res,next) => {
+    res.render(404);
 });
 
 
